@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import MapView from './MapView'; // Assuming MapView is in the same directory
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          console.log('User location:', latitude, longitude);
+        },
+        error => {
+          console.error('Geolocation error:', error.message);
+        }
+      );
+    } else {
+      console.warn('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
+  return <MapView />;
 }
 
 export default App;
