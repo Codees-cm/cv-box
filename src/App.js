@@ -764,9 +764,7 @@ export default function MapView() {
                     <div style={{ marginBottom: '5px' }}>
                       <strong>Description:</strong> {pothole.description}
                     </div>
-                    <div style={{ marginBottom: '5px', fontSize: '12px', color: '#666' }}>
-                      📊 Reported by {pothole.reportedBy}
-                    </div>
+
                     <div style={{ fontSize: '11px', color: '#888' }}>
                       Last updated: {pothole.lastUpdated}
                     </div>
